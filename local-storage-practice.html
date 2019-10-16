@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JavaScript Practice</title>
+    <style>
+        input, button {
+            padding: 7px;
+            height: 40px;
+        }
+        fieldset {
+            margin-bottom: 20px;
+        }    
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Insert Data</legend>
+        <input type="text" id="inputKey" placeholder="Enter key...">
+        <input type="text" id="inputValue" placeholder="Enter value...">
+        <button type="button" id="btnInsert">Insert Data</button>
+    </fieldset>
+    <fieldset>
+        <legend>Local Storage Output</legend>
+        <div id="lsOutput"></div>
+    </fieldset>
+    <script>
+        const inputKey = document.getElementById("inputKey");
+        const inputValue = document.getElementById("inputValue");
+        const btnInsert = document.getElementById("btnInsert");
+        const lsOutput = document.getElementById("lsOutput");
+
+        btnInsert.onclick = function () {
+            const key = inputKey.value;
+            const value = inputValue.value;
+
+            if (key && value) {
+                localStorage.setItem(key, value);
+                location.reload();
+            }
+        }
+        for (var i = 0; i < localStorage.length; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            lsOutput.innerHTML += key + ": " +value;
+        }
+    </script>
+</body>
+</html>
